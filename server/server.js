@@ -11,9 +11,7 @@ app.use(bodyParser.json());
 
 app.post('/todos', (req, res) => {
   var todo = new Todo({
-    'text': req.body.text,
-    'completed': req.body.completed,
-    'completedAt': req.body.completedAt
+    'text': req.body.text
   });
 
   todo.save().then((doc) => {
@@ -26,3 +24,5 @@ app.post('/todos', (req, res) => {
 app.listen(3000, () => {
   console.log('Server is Up');
 });
+
+module.exports = {app};
