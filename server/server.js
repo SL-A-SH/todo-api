@@ -1,3 +1,5 @@
+require('./config/config');
+
 const _ = require('lodash');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -9,6 +11,7 @@ var { User } = require('./models/user');
 const {ObjectID} = require('mongodb');
 
 var app = express();
+const port = process.env.PORT;
 
 app.use(bodyParser.json());
 
@@ -89,8 +92,8 @@ app.patch('/todos/:id', (req, res) => {
 
 });
 
-app.listen(3000, () => {
-  console.log('Server is Up');
+app.listen(port, () => {
+  console.log(`Server is up at port ${port}`);
 });
 
 module.exports = {app};
